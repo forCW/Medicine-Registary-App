@@ -1,0 +1,38 @@
+html
+  head
+    title Medicine Registry App
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      h1 Medicine Registry App
+      form(action="/medicines", method="POST")
+        
+        label(for="name") Name:
+        input(type="text", name="name")
+        br
+        label(for="quantity") Quantity:
+        input(type="number", name="quantity")
+        br
+        label(for="price") Price:
+        input(type="number", name="price")
+        br
+        label(for="description") Description:
+        textarea(name="description" rows="4" cols="50")
+        br
+        button(type="submit") Add Medicine
+      hr
+      if medicines.length > 0
+        h2 Registered Medicines
+        ul
+          each medicine, index in medicines
+            li
+              a(href=`/medicines/${index}`)= `${medicine.name} - ${medicine.quantity}`
+              span.price= `Price: $${medicine.price}`
+              form(action=`/medicines/${index}/delete`, method="POST", style="display:inline;")
+                button(type="submit") Delete
+      else
+        p No medicines registered yet.
+
+
+
+

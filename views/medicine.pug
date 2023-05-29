@@ -1,0 +1,22 @@
+html
+  head
+    title Medicine Details
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Medicine Details
+    form(action=`/medicines/${medicineIndex}`, method="POST")
+      label(for="name") Name:
+      input(type="text", name="name", value=medicine.name)
+      br
+      label(for="quantity") Quantity:
+      input(type="number", name="quantity", value=medicine.quantity)
+      br
+      label(for="price") Price:
+      input(type="number", name="price", value=medicine.price)
+      br
+      label(for="description") Description:
+      textarea(name="description", rows="4", cols="50")= medicine.description
+      br
+      button(type="submit") Update
+    form(action=`/medicines/${medicineIndex}/delete`, method="POST")
+      button(type="submit") Delete
